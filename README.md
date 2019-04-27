@@ -7,6 +7,6 @@ Backend:
 
 Frontend:
 - express and hbs template engine
-- hosted using zeit now alias "howie-blog.now.sh"
+- hosted using zeit now alias [howie-blog.now.sh](https://howie-blog.now.sh/template/hello-world)
 
 
