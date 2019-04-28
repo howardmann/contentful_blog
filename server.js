@@ -34,6 +34,15 @@ let getBlogPost = (slug) => {
 // routes
 app.get('/', async (req, res, next) => {
   let blogs = await client.getEntries({
+    'content_type': 'blogPost',
+    'select': 'sys.id,fields.slug,fields.title,fields.description' // weird syntax to return select properties "select": "field.<field_name>,field.<field_name>" 
+  })
+  console.log(blogs.items);
+  res.render('index',{items: blogs.items})
+})
+
+app.get('/json/', async (req, res, next) => {
+  let blogs = await client.getEntries({
     'content_type': 'blogPost' 
   })
   res.json(blogs)
@@ -54,7 +63,7 @@ app.get('/template/:slug', async (req, res, next) => {
 })
 
 
-const PORT = 4000
+const PORT = 3000
 app.listen(PORT, () => {
   console.log(`Listening on PORT ${PORT}`);
 })
