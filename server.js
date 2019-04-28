@@ -2,6 +2,11 @@ let express = require('express')
 let exphbs = require('express-handlebars')
 let app = express()
 
+let compression = require('compression')
+
+// enable compression
+app.use(compression())
+
 //serve static files from public folder
 app.use(express.static('public'))
 
