@@ -18,9 +18,7 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 // markdown helper
-// let marked = require('marked')
-let MarkdownIt = require('markdown-it'),
-md = new MarkdownIt();
+let marked = require('marked')
 
 
 // contentful client
@@ -45,7 +43,11 @@ app.get('/', async (req, res, next) => {
     'content_type': 'blogPost',
     'select': 'sys.id,fields.slug,fields.title,fields.description' // weird syntax to return select properties "select": "field.<field_name>,field.<field_name>" 
   })
-  res.render('index',{items: blogs.items})
+  res.render('index',{
+    items: blogs.items,
+    metaTitle: 'homepage',
+    metaDecription: 'This is the description'
+  })
 })
 
 app.get('/json/', async (req, res, next) => {
@@ -63,9 +65,12 @@ app.get('/json/:slug', async (req, res, next) => {
 app.get('/template/:slug', async (req, res, next) => {
 
   let post = await getBlogPost(req.params.slug)
+  let items = post.items[0]
   res.render('template', {
-    post: post.items[0],
-    body: md.render(post.items[0].fields.body)
+    post: items,
+    body: marked(items.fields.body),
+    metaTitle: items.fields.title,
+    metaDescription: items.fields.description
   })
 })
 

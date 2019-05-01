@@ -1,0 +1,18 @@
+body {
+  max-width: 42rem;
+  display: block;
+  margin: 0 auto;
+  padding: 0px 5px 50px 5px;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  max-height: 300px;
+}
+
+iframe {
+  display: block;
+  margin: 15px auto;
+  max-width: 100%;
+}
