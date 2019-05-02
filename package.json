@@ -20,6 +20,6 @@
     "marked": "^0.6.2"
   },
   "now": {
-    "alias": "howie-blog"
+    "alias": ["mannhowie.com", "www.mannhowie.com"]
   }
 }
