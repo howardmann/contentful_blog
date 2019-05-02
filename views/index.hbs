@@ -1,14 +1,13 @@
-
-<h2>Blog Post Index</h2>
-<ul>
 {{#each items}}
-  <li>title: {{fields.title}}</li>
-  <ul>
-    <li>id: {{sys.id}}</li>
-    <li>description: {{fields.description}}</li>
-    <li>slug: <a href="/template/{{fields.slug}}">{{fields.slug}}</a></li>
-  </ul>
+  <h3>
+    <a href="/{{fields.slug}}"> {{fields.title}} </a>
+  </h3>
+  <p>
+    {{dateFormat sys.createdAt}} |
+    {{readTime fields.body}}
+  </p>
+  <p>
+    {{fields.description}}
+  </p>
+  <hr>
 {{/each}}
-
-</ul>
-

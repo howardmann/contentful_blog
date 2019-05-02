@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>{{metaTitle}}</title>
   <meta name="description" content="{{metaDescription}}">
-  <link rel="stylesheet" href="/css/github-markdown.css">
-  <link rel="stylesheet" href="/css/github-gist.css">
+  <link rel="stylesheet" href="/css/github-markdown.min.css">
+  <link rel="stylesheet" href="/css/github-gist.min.css">
   <link rel="stylesheet" href="/css/main.css">
 </head>
-<body class="markdown-body">
-  <br>
-  <h3
-    style="font-family: sans-serif; margin-left: 1px; margin-top: 0px; margin-bottom: 0px; height: 42px; line-height: 2.625rem;">
-    <a href="/">
-      Howie Mann
-    </a>      
-  </h3>
 
-  {{{body}}}
+<body class="markdown-body">
+  <header>
+    <h3 style="font-family: sans-serif; margin-left: 1px; margin-top: 0px; margin-bottom: 0px; height: 42px; line-height: 2.625rem;">
+      <a href="/" style="color: black;">Howie Mann</a>
+    </h3>
+    <h6> I explain things learnt in software, finance and marketing. </h6>
+  </header>
+
+  <main>
+    {{{body}}}
+  </main>
+
+  <footer>
+    <a href="https://github.com/howardmann" target="_blank">github</a> | <a href="https://www.linkedin.com/in/howie-mann/" target="_blank">linkedin</a>
+  </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+  <script> hljs.initHighlightingOnLoad(); </script>
 </body>
+
 </html>

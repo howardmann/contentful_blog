@@ -4,6 +4,9 @@ body {
   margin: 0 auto;
   padding: 42px 21px;
 }
+main {
+  min-height: 80vh;
+}
 
 img {
   display: block;

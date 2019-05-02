@@ -1,10 +1,9 @@
-<div class="markdown-body">
-  <h1>
-    {{post.fields.title}}
-  </h1>
-    <p>
-      {{post.sys.createdAt}}
-    </p>
+<h1>
+  {{post.fields.title}}
+</h1>
+<p>
+  {{dateFormat post.sys.createdAt}} |
+  {{readTime post.fields.body}}
+</p>
 
-  {{{body}}}
-</div>
+{{{body}}}
