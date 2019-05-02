@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 let express = require('express')
 let exphbs = require('express-handlebars')
 let app = express()
@@ -35,8 +37,8 @@ let marked = require('marked')
 let contentful = require('contentful')
 
 let client = contentful.createClient({
-  accessToken: '052507e07cecf8fd9e27dca2ac1bfe3a16c66d628a2e5baf0cc606a5edb17299',
-  space: 'vwq10xzbe6iz'
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  space: process.env.CONTENTFUL_SPACE
 })
 
 // helper
