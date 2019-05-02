@@ -19,6 +19,7 @@
     "helmet": "^3.16.0",
     "markdown-it": "^8.4.2",
     "markdown-it-highlightjs": "^3.0.0",
-    "markdown-it-plugin-data-src": "^1.0.0"
+    "markdown-it-plugin-data-src": "^1.0.0",
+    "sitemap": "^2.1.0"
   }
 }

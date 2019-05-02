@@ -4,11 +4,11 @@ let express = require('express')
 let exphbs = require('express-handlebars')
 let app = express()
 let helmet = require('helmet')
-
+let sitemapClient = require('./src/sitemapClient')
 let compression = require('compression')
 
 // helpers
-let helpers = require('./helpers')
+let helpers = require('./src/helpers')
 
 // enable compression
 app.use(compression())
@@ -70,6 +70,26 @@ app.get('/', async (req, res, next) => {
   })
 })
 
+app.get('/sitemap', async (req, res, next) => {
+  let slugs = await client.getEntries({
+    'content_type': 'blogPost',
+    'select': 'fields.slug'
+  })
+  let sitemapMeta = slugs.items.map(el => {
+    return {
+      url: `/${el.fields.slug}`,
+      changefreq: 'weekly'
+    }
+  })
+  sitemapClient(sitemapMeta).toXML((err, xml) => {
+    if (err) {
+      return res.status(500).end()
+    }
+    res.header('Content-Type', 'application/xml')
+    res.send(xml)
+  })
+})
+
 app.get('/:slug', async (req, res, next) => {
 
   let post = await getBlogPost(req.params.slug)
@@ -81,6 +101,8 @@ app.get('/:slug', async (req, res, next) => {
     metaDescription: items.fields.description
   })
 })
+
+
 
 app.get('/json/', async (req, res, next) => {
   let blogs = await client.getEntries({
