@@ -57,8 +57,8 @@ app.get('/', async (req, res, next) => {
   })
   res.render('index',{
     items: blogs.items,
-    metaTitle: 'homepage',
-    metaDecription: 'This is the description'
+    metaTitle: 'Howie Mann Blog',
+    metaDecription: 'I explain things learnt in software, finance and marketing.'
   })
 })
 
