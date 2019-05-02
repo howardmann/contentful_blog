@@ -9,12 +9,40 @@
   <meta name="description" content="{{metaDescription}}">
   <link rel="stylesheet" href="/css/github-markdown.min.css">
   <link rel="stylesheet" href="/css/github-gist.min.css">
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <style>
+    body {
+      max-width: 42rem;
+      display: block;
+      margin: 0 auto;
+      padding: 42px 21px;
+    }
+
+    main {
+      min-height: 70vh;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      max-height: 300px;
+    }
+
+    iframe {
+      display: block;
+      margin: 15px auto;
+      max-width: 100%;
+    }
+  </style>
 </head>
 
 <body class="markdown-body">
   <header>
-    <h3 style="font-family: sans-serif; margin-left: 1px; margin-top: 0px; margin-bottom: 0px; height: 42px; line-height: 2.625rem;">
+    <h3
+      style="font-family: sans-serif; margin-left: 1px; margin-top: 0px; margin-bottom: 0px; height: 42px; line-height: 2.625rem;">
       <a href="/" style="color: black;">Howie Mann</a>
     </h3>
     <h6> I explain things learnt in software, finance and marketing. </h6>
@@ -25,10 +53,18 @@
   </main>
 
   <footer>
-    <a href="https://github.com/howardmann" target="_blank">github</a> | <a href="https://www.linkedin.com/in/howie-mann/" target="_blank">linkedin</a>
+    <a href="https://github.com/howardmann" target="_blank">github</a> | <a
+      href="https://www.linkedin.com/in/howie-mann/" target="_blank">linkedin</a>
   </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
-  <script> hljs.initHighlightingOnLoad(); </script>
+  {{!-- Lozad lazy image loading source --}}
+  <script src="https://cdn.jsdelivr.net/npm/lozad"></script>
+  <script>
+    // Get all image tags and run Lozad lazy loading on them
+    var images = document.querySelectorAll('img')
+    var observer = lozad(images);
+    observer.observe();
+  </script>
+
 </body>
 
 </html>

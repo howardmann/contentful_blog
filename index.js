@@ -30,8 +30,16 @@ app.set('view engine', '.hbs');
 
 
 // markdown helper
-let marked = require('marked')
-
+// let marked = require('marked')
+let md = require('markdown-it')({
+  html: true
+})
+// use highlightjs syntax highlighting
+let hljs = require('markdown-it-highlightjs')
+md.use(hljs)
+// lazy load (replace src with data-src) to use lozad (in template)
+let dataSrc = require('markdown-it-plugin-data-src')
+md.use(dataSrc)
 
 // contentful client
 let contentful = require('contentful')
@@ -68,7 +76,7 @@ app.get('/:slug', async (req, res, next) => {
   let items = post.items[0]
   res.render('template', {
     post: items,
-    body: marked(items.fields.body),
+    body: md.render(items.fields.body),
     metaTitle: items.fields.title,
     metaDescription: items.fields.description
   })
