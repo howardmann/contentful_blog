@@ -37,8 +37,8 @@ let marked = require('marked')
 let contentful = require('contentful')
 
 let client = contentful.createClient({
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  space: process.env.CONTENTFUL_SPACE
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "052507e07cecf8fd9e27dca2ac1bfe3a16c66d628a2e5baf0cc606a5edb17299",
+  space: process.env.CONTENTFUL_SPACE || "vwq10xzbe6iz"
 })
 
 // helper
@@ -87,8 +87,9 @@ app.get('/json/:slug', async (req, res, next) => {
 })
 
 
-
 const PORT = 3000
 app.listen(PORT, () => {
   console.log(`Listening on PORT ${PORT}`);
 })
+
+//module.exports = app
