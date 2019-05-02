@@ -18,8 +18,5 @@
     "express-handlebars": "^3.0.2",
     "helmet": "^3.16.0",
     "marked": "^0.6.2"
-  },
-  "now": {
-    "alias": ["mannhowie.com", "www.mannhowie.com"]
   }
 }
