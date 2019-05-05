@@ -90,10 +90,23 @@ app.get('/sitemap', async (req, res, next) => {
   })
 })
 
-app.get('/:slug', async (req, res, next) => {
+app.get('/json/', async (req, res, next) => {
+  let blogs = await client.getEntries({
+    'content_type': 'blogPost'
+  })
+  res.json(blogs)
+})
 
+app.get('/json/:slug', async (req, res, next) => {
+  let post = await getBlogPost(req.params.slug)
+  res.json(post)
+})
+
+app.get('/:slug', async (req, res, next) => {
   let post = await getBlogPost(req.params.slug)
   let items = post.items[0]
+  if (!items) return next()
+  
   res.render('template', {
     post: items,
     body: md.render(items.fields.body),
@@ -103,18 +116,21 @@ app.get('/:slug', async (req, res, next) => {
 })
 
 
+// Catch and send error messages
+app.use(function (err, req, res, next) {
+  if (err) {
+    res.status(422).json({
+      error: err.message
+    });
+  } else {
+    next();
+  }
+});
 
-app.get('/json/', async (req, res, next) => {
-  let blogs = await client.getEntries({
-    'content_type': 'blogPost' 
-  })
-  res.json(blogs)
-})
-
-app.get('/json/:slug', async (req, res, next) => {
-  let post = await getBlogPost(req.params.slug)
-  res.json(post)
-})
+// 404
+app.use(function (req, res) {
+  res.status(404).render('404');
+});
 
 
 const PORT = 3000
