@@ -61,6 +61,7 @@ let getBlogPost = (slug) => {
 app.get('/', async (req, res, next) => {
   let blogs = await client.getEntries({
     'content_type': 'blogPost',
+    'order': '-sys.createdAt',
     'select': 'sys.createdAt,sys.id,fields.slug,fields.title,fields.description,fields.body' // weird syntax to return select properties "select": "field.<field_name>,field.<field_name>" 
   })
   res.render('index',{
