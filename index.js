@@ -117,6 +117,21 @@ app.get('/:slug', async (req, res, next) => {
   })
 })
 
+app.get('/tags/:tag', async (req, res, next) => {
+  let tag = req.params.tag
+  let blogs = await client.getEntries({
+    'fields.tags': tag,
+    'content_type': 'blogPost',
+    'order': '-sys.createdAt',
+    'select': 'sys.createdAt,sys.id,fields.slug,fields.title,fields.description,fields.body,fields.tags' // weird syntax to return select properties "select": "field.<field_name>,field.<field_name>" 
+  })
+  res.render('index', {
+    tag: tag,
+    items: blogs.items,
+    metaTitle: 'Howie Mann: Sharing Tech Startup Insights',
+    metaDecription: "An ex-banker's view of software, finance and growth marketing."
+  })
+})
 
 // Catch and send error messages
 app.use(function (err, req, res, next) {
