@@ -7,8 +7,8 @@
     {{readTime fields.body}}
   </p>
   <p>
-    {{#each fields.tags}}
-      {{> tag tag=this}}
+    {{#each fields.tags as |tag|}}
+      {{> tag-single tag=tag}}
     {{/each}}
   </p>
   <p>
