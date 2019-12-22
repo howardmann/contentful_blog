@@ -5,5 +5,9 @@
   {{dateFormat post.sys.createdAt}} |
   {{readTime post.fields.body}}
 </p>
-
+<p>
+  {{#each tags}}
+    {{> tag tag=this}}
+  {{/each}}
+</p>
 {{{body}}}

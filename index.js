@@ -62,7 +62,7 @@ app.get('/', async (req, res, next) => {
   let blogs = await client.getEntries({
     'content_type': 'blogPost',
     'order': '-sys.createdAt',
-    'select': 'sys.createdAt,sys.id,fields.slug,fields.title,fields.description,fields.body' // weird syntax to return select properties "select": "field.<field_name>,field.<field_name>" 
+    'select': 'sys.createdAt,sys.id,fields.slug,fields.title,fields.description,fields.body,fields.tags' // weird syntax to return select properties "select": "field.<field_name>,field.<field_name>" 
   })
   res.render('index',{
     items: blogs.items,
@@ -112,7 +112,8 @@ app.get('/:slug', async (req, res, next) => {
     post: items,
     body: md.render(items.fields.body),
     metaTitle: items.fields.title,
-    metaDescription: items.fields.description
+    metaDescription: items.fields.description,
+    tags: items.fields.tags
   })
 })
 
