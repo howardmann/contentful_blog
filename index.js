@@ -150,9 +150,9 @@ app.use(function (req, res) {
 });
 
 
-const PORT = 3000
+const { PORT = 3000 } = process.env
 app.listen(PORT, () => {
   console.log(`Listening on PORT ${PORT}`);
 })
 
-//module.exports = app
+// module.exports = app
