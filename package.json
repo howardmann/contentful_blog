@@ -18,7 +18,7 @@
     "express-handlebars": "^3.0.2",
     "helmet": "^3.16.0",
     "markdown-it": "^8.4.2",
-    "markdown-it-highlightjs": "^3.0.0",
+    "markdown-it-highlightjs": "^3.3.1",
     "markdown-it-plugin-data-src": "^1.0.0",
     "sitemap": "^2.1.0"
   }
